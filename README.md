@@ -7,7 +7,8 @@ resume.json          ← the only file you edit for content (EN + ES)
 build/build.mjs      ← orchestrator: JSON → dist/
 build/template.mjs   ← HTML generator (UI chrome strings live here)
 build/styles.css     ← "Indigo Nights" design system (dark by default, light toggle)
-build/pdf.mjs        ← ATS PDF generator (pdfkit, Helvetica, single column)
+build/pdf.mjs        ← ATS PDF generator (pdfkit, embedded Sora + Inter, single column)
+build/fonts/         ← Sora + Inter static instances (OFL) embedded in the PDF
 public/              ← static assets copied as-is (profile photo, company logos)
 dist/                ← build output (git-ignored, served by Vercel)
 ```
@@ -41,7 +42,9 @@ npm run preview   # http://localhost:8081
 
 ## Deployment
 
-Vercel builds the site from `main` using `vercel.json` (`npm run build`, output `dist/`). No browser binaries are required: the PDF is produced with `pdfkit`, so the build runs anywhere Node 18+ runs.
+Vercel builds the site from `main` using `vercel.json` (`npm run build`, output `dist/`). No browser binaries are required: the PDF is produced with `pdfkit` and the fonts in `build/fonts/`, so the build runs anywhere Node 18+ runs.
+
+The PDF mirrors the page's design system (Sora/Inter, indigo accents, chips, section eyebrows) while staying ATS-safe: one column, standard headings, real selectable text, no icons, no emoji, no tables. Set `PDF_MAX_PAGES=3` only to debug an overflow; the default limit is 2 pages.
 
 ## Privacy
 
