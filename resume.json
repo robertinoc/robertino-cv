@@ -1,0 +1,273 @@
+{
+  "$comment": "Single source of truth for resume.robertino.world (web page, EN + ES) and the ATS PDF. Edit this file, then run `npm run build`. Dates are YYYY-MM or YYYY; end = null means present.",
+  "name": "Robertino Calcaterra",
+  "site": {
+    "url": "https://resume.robertino.world",
+    "home": "https://robertino.world",
+    "ogImage": "/profile.jpg",
+    "pdf": { "en": "Robertino-Calcaterra-Resume.pdf", "es": "Robertino-Calcaterra-CV-ES.pdf" }
+  },
+  "meta": {
+    "title": {
+      "en": "Robertino Calcaterra | Growth & Product Marketing, B2B tech",
+      "es": "Robertino Calcaterra | Growth & Product Marketing, B2B tech"
+    },
+    "description": {
+      "en": "Growth and product marketing for B2B tech. 7 years at Auth0/Okta in developer content; founder of StageLink and EnergyCurve. Corrientes, Argentina.",
+      "es": "Growth y product marketing para B2B tech. 7 años en Auth0/Okta en contenido para developers; fundador de StageLink y EnergyCurve. Corrientes, Argentina."
+    }
+  },
+  "headline": {
+    "en": "AI-driven Growth & Marketing at Migbirds | Helping B2B platforms grow through content, community & DevEx | Founder: StageLink, EnergyCurve | Ex-Auth0/Okta",
+    "es": "Growth & Marketing con IA en Migbirds | Ayudo a plataformas B2B a crecer con contenido, comunidad y DevEx | Fundador: StageLink, EnergyCurve | Ex-Auth0/Okta"
+  },
+  "title": {
+    "en": "Growth & Product Marketing at Migbirds · Founder of StageLink and EnergyCurve · Ex-Auth0/Okta",
+    "es": "Growth & Product Marketing en Migbirds · Fundador de StageLink y EnergyCurve · Ex-Auth0/Okta"
+  },
+  "jobTitle": { "en": "Growth & Product Marketing", "es": "Growth & Product Marketing" },
+  "location": { "en": "Corrientes, Argentina · Remote", "es": "Corrientes, Argentina · Remoto" },
+  "contact": {
+    "email": "robertinoc@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/robertinocalcaterra"
+  },
+  "summary": {
+    "en": [
+      "Growth and product marketing operator for B2B tech platforms, with seven years at Auth0/Okta running developer content strategy and operations at global scale.",
+      "Today I lead growth and product marketing at Migbirds, and I build and ship two music-tech products of my own, StageLink and EnergyCurve.",
+      "I work where content, community and developer experience meet, and I run AI-assisted workflows to move faster without lowering the bar."
+    ],
+    "es": [
+      "Operador de growth y product marketing para plataformas B2B tech, con siete años en Auth0/Okta liderando estrategia y operaciones de contenido para developers a escala global.",
+      "Hoy lidero growth y product marketing en Migbirds, y construyo y lanzo dos productos music-tech propios: StageLink y EnergyCurve.",
+      "Trabajo donde se cruzan contenido, comunidad y developer experience, con flujos de trabajo asistidos por IA para avanzar más rápido sin bajar la vara."
+    ]
+  },
+  "workingStyle": {
+    "source": { "en": "Verified behavioral profile · Migbirds, March 2026", "es": "Perfil conductual verificado · Migbirds, marzo 2026" },
+    "en": "Participative primary profile, Organizer secondary: collaborative, inclusive and decisive. Strongest traits in the test: creativity, support and logic. Assertiveness centered at 90%.",
+    "es": "Perfil principal Participativo, secundario Gestor: colaborativo, inclusivo y decisivo. Rasgos más fuertes en el test: creatividad, apoyo y lógica. Asertividad centrada al 90%."
+  },
+  "experience": [
+    {
+      "company": "Migbirds",
+      "url": "https://migbirds.com",
+      "logo": "/logos/migbirds.png",
+      "role": { "en": "Growth & Product Marketing", "es": "Growth & Product Marketing" },
+      "start": "2026-01",
+      "end": null,
+      "location": { "en": "Remote", "es": "Remoto" },
+      "bullets": {
+        "en": [
+          "Define the platform's positioning and product communication together with the founding team.",
+          "Structure marketing initiatives and support the go-to-market of a smarter talent-matching experience for candidates and companies.",
+          "Own roadmap planning, competitive research and growth operations across the funnel.",
+          "Plan QA documentation and privacy and security audits ahead of releases."
+        ],
+        "es": [
+          "Defino el posicionamiento de la plataforma y la comunicación de producto junto al equipo fundador.",
+          "Estructuro las iniciativas de marketing y acompaño el go-to-market de una experiencia de matching de talento más inteligente para candidatos y empresas.",
+          "Gestiono la planificación del roadmap, la investigación competitiva y las operaciones de growth en todo el funnel.",
+          "Planifico la documentación de QA y las auditorías de privacidad y seguridad antes de cada release."
+        ]
+      },
+      "tools": ["Product positioning", "Go-to-market", "Content strategy", "Competitive research", "QA planning"]
+    },
+    {
+      "company": "Auth0 (Okta)",
+      "url": "https://auth0.com",
+      "logo": "/logos/auth0.png",
+      "role": { "en": "Senior Program Analyst, Technical Content", "es": "Senior Program Analyst, Technical Content" },
+      "start": "2022-04",
+      "end": "2025-06",
+      "location": { "en": "Argentina · Remote", "es": "Argentina · Remoto" },
+      "bullets": {
+        "en": [
+          "Led developer content strategy and operations for identity and security platforms in a global B2B environment, owning the end-to-end lifecycle: editorial planning, topic selection, production workflows and quality assurance.",
+          "Coordinated a network of internal and external contributors (writers, reviewers, illustrators), keeping tone and brand consistent.",
+          "Integrated AI tools into editorial workflows to streamline production and improve scalability and documentation.",
+          "Monitored performance with Google Analytics, Looker Studio and UTM tracking, feeding results back into content iterations and strategy."
+        ],
+        "es": [
+          "Lideré la estrategia y las operaciones de contenido para developers en plataformas de identidad y seguridad, en un entorno B2B global, con responsabilidad sobre todo el ciclo: planificación editorial, selección de temas, flujos de producción y control de calidad.",
+          "Coordiné una red de colaboradores internos y externos (redactores, revisores, ilustradores), manteniendo consistencia de tono y marca.",
+          "Integré herramientas de IA en los flujos editoriales para agilizar la producción y mejorar la escalabilidad y la documentación.",
+          "Medí el rendimiento con Google Analytics, Looker Studio y tracking UTM, y usé los resultados para iterar contenido y estrategia."
+        ]
+      },
+      "tools": ["Contentful", "Asana", "Airtable", "Confluence", "Monday.com", "Google Analytics", "Looker Studio", "Rebrandly"]
+    },
+    {
+      "company": "Auth0",
+      "url": "https://auth0.com",
+      "logo": "/logos/auth0.png",
+      "role": { "en": "Developer Marketing Content", "es": "Developer Marketing Content" },
+      "start": "2018-07",
+      "end": "2022-04",
+      "location": { "en": "Buenos Aires, Argentina · Remote", "es": "Buenos Aires, Argentina · Remoto" },
+      "bullets": {
+        "en": [
+          "Ran production workflows and quality assurance for developer-facing content on identity and security.",
+          "Distributed content across developer communities (LinkedIn, Reddit, newsletters) to increase reach and engagement.",
+          "Collaborated with engineering, design, product and marketing to keep content accurate and aligned with business goals."
+        ],
+        "es": [
+          "Gestioné los flujos de producción y el control de calidad del contenido para developers sobre identidad y seguridad.",
+          "Distribuí contenido en comunidades de developers (LinkedIn, Reddit, newsletters) para aumentar alcance y engagement.",
+          "Colaboré con ingeniería, diseño, producto y marketing para mantener el contenido preciso y alineado con los objetivos del negocio."
+        ]
+      },
+      "tools": ["Developer marketing", "Technical writing", "Community distribution", "Editorial QA"]
+    },
+    {
+      "company": "Nuevo Banco del Chaco S.A.",
+      "url": null,
+      "logo": null,
+      "role": { "en": "Senior Software Quality Analyst", "es": "Senior Software Quality Analyst" },
+      "start": "2016-05",
+      "end": "2019-11",
+      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" },
+      "bullets": {
+        "en": [
+          "Designed and executed end-to-end manual test cases for banking applications.",
+          "Verified software behavior across environments against functional requirements.",
+          "Wrote test plans and documentation and collaborated with development teams.",
+          "Produced reports and took part in daily Agile ceremonies."
+        ],
+        "es": [
+          "Diseñé y ejecuté casos de prueba manuales de punta a punta para aplicaciones bancarias.",
+          "Verifiqué el comportamiento del software en distintos entornos contra los requerimientos funcionales.",
+          "Redacté planes de prueba y documentación, y colaboré con los equipos de desarrollo.",
+          "Produje reportes y participé en las ceremonias diarias de Agile."
+        ]
+      },
+      "tools": ["Manual testing", "Test documentation", "Agile", "SQL (basic)", "MS Excel"]
+    },
+    {
+      "company": { "en": "Self-employed", "es": "Independiente" },
+      "url": null,
+      "logo": null,
+      "role": { "en": "Freelance Web Developer & Designer", "es": "Desarrollador y diseñador web freelance" },
+      "start": "2012",
+      "end": "2016",
+      "location": { "en": "Corrientes, Argentina · Remote", "es": "Corrientes, Argentina · Remoto" },
+      "bullets": {
+        "en": [
+          "Designed and developed responsive websites on Joomla, WordPress and Contentful, including site content and optimization.",
+          "Created brand identities, logos and UI assets with Canva, Photoshop and Illustrator.",
+          "Managed hosting, domains, DNS, SSL certificates and email setup.",
+          "Trained clients on CMS usage and provided ongoing support."
+        ],
+        "es": [
+          "Diseñé y desarrollé sitios web responsive en Joomla, WordPress y Contentful, incluyendo contenido y optimización.",
+          "Creé identidades de marca, logos y recursos de UI con Canva, Photoshop e Illustrator.",
+          "Administré hosting, dominios, DNS, certificados SSL y configuración de email.",
+          "Capacité a clientes en el uso del CMS y brindé soporte continuo."
+        ]
+      },
+      "tools": ["Web design", "CMS", "SEO", "Hosting", "cPanel", "Branding"]
+    },
+    {
+      "company": "Universidad Tecnológica Nacional (UTN FRRe)",
+      "url": "https://www.frre.utn.edu.ar",
+      "logo": "/logos/utn.jpg",
+      "role": { "en": "Assistant Professor, Computer Architecture · Student Mentor", "es": "Auxiliar docente, Arquitectura de Computadoras · Tutor de estudiantes" },
+      "start": "2011-08",
+      "end": "2015-01",
+      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" },
+      "bullets": {
+        "en": [
+          "Taught theory and practice for the Computer Architecture course in the first year of Systems Engineering.",
+          "Created assessments and practical work guides for the course.",
+          "Mentored first-year and newly enrolled students through the Introductory Seminar to Systems Engineering.",
+          "Contributed to the GIE educational research project \"Exploring New Tools for Learning in University Environments\"."
+        ],
+        "es": [
+          "Dicté teoría y práctica de Arquitectura de Computadoras en el primer nivel de Ingeniería en Sistemas.",
+          "Elaboré evaluaciones y guías de trabajos prácticos para la cátedra.",
+          "Acompañé como tutor a ingresantes y estudiantes de primer año en el Seminario Introductorio a Ingeniería en Sistemas.",
+          "Participé en el proyecto de investigación educativa del GIE \"Explorando nuevas herramientas para el aprendizaje en entornos universitarios\"."
+        ]
+      },
+      "tools": ["Pedagogy", "Moodle", "Curriculum design", "Research"]
+    }
+  ],
+  "founderProjects": [
+    {
+      "name": "StageLink",
+      "url": "https://stagelink.art",
+      "display": "stagelink.art",
+      "logo": "/logos/stagelink.png",
+      "role": { "en": "CEO & Founder", "es": "CEO y Fundador" },
+      "start": "2026-01",
+      "end": null,
+      "tagline": {
+        "en": "Music-tech platform where DJs, producers and electronic artists build professional artist pages, EPKs and digital profiles designed for discovery, credibility and bookings.",
+        "es": "Plataforma music-tech donde DJs, productores y artistas de música electrónica crean páginas de artista, EPKs y perfiles digitales pensados para descubrimiento, credibilidad y bookings."
+      },
+      "focus": ["Product strategy", "Brand positioning", "Go-to-market", "Artist growth", "Creator tools"]
+    },
+    {
+      "name": "EnergyCurve",
+      "url": "https://energycurve.app",
+      "display": "energycurve.app",
+      "logo": null,
+      "role": { "en": "CEO & Founder", "es": "CEO y Fundador" },
+      "start": "2026-01",
+      "end": null,
+      "tagline": {
+        "en": "Music-tech SaaS that shows DJs the shape of a set before they play it: paste a tracklist or import from Rekordbox or Traktor and get the energy curve. Free browser tools, no account, audio never leaves the DJ's computer. Part of the StageLink family.",
+        "es": "SaaS music-tech que muestra a los DJs la forma de un set antes de tocarlo: pegás un tracklist o importás desde Rekordbox o Traktor y obtenés la curva de energía. Herramientas gratis en el navegador, sin cuenta, y el audio nunca sale de la computadora del DJ. Parte de la familia StageLink."
+      },
+      "focus": ["Product strategy", "Positioning", "Content & SEO", "Go-to-market", "First 100 users, no paid promotion"]
+    }
+  ],
+  "skills": [
+    {
+      "group": { "en": "Growth & content", "es": "Growth y contenido" },
+      "color": "indigo",
+      "items": ["Content strategy", "Editorial planning", "Technical writing", "Developer marketing", "Community distribution", "SEO", "Brand positioning", "Go-to-market", "Competitive research", "Performance reporting"]
+    },
+    {
+      "group": { "en": "Product & DevEx", "es": "Producto y DevEx" },
+      "color": "teal",
+      "items": ["Product marketing", "Product positioning", "Roadmap planning", "Developer experience", "QA planning", "Manual testing", "Test documentation", "HTML & CSS", "CMS (Contentful, WordPress, Joomla)"]
+    },
+    {
+      "group": { "en": "Tools", "es": "Herramientas" },
+      "color": "amber",
+      "items": ["Contentful", "Asana", "Airtable", "Confluence", "Monday.com", "Google Analytics", "Looker Studio", "Rebrandly", "Canva", "Photoshop", "Illustrator", "Moodle"]
+    },
+    {
+      "group": { "en": "AI-assisted workflows", "es": "Flujos de trabajo con IA" },
+      "color": "white",
+      "items": ["AI tools in editorial workflows", "AI-assisted content production", "AI-assisted documentation", "AI-assisted QA planning", "AI-driven growth operations"]
+    }
+  ],
+  "education": [
+    {
+      "degree": { "en": "University Systems Analyst", "es": "Analista Universitario en Sistemas" },
+      "school": "Universidad Tecnológica Nacional (UTN)",
+      "start": "2002",
+      "end": "2009",
+      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" }
+    }
+  ],
+  "certifications": [
+    {
+      "name": { "en": "Certified Yoga Teacher (international)", "es": "Profesor de Yoga certificado (internacional)" },
+      "year": "2020"
+    }
+  ],
+  "languages": [
+    { "name": { "en": "Spanish", "es": "Español" }, "level": { "en": "Native", "es": "Nativo" } },
+    { "name": { "en": "English", "es": "Inglés" }, "level": { "en": "Professional", "es": "Profesional" } }
+  ],
+  "beyondWork": {
+    "en": "Certified yoga teacher. DJ and electronic music producer as ROBERTINOC.",
+    "es": "Profesor de yoga certificado. DJ y productor de música electrónica como ROBERTINOC.",
+    "links": [
+      { "label": "ROBERTINOC", "url": "https://stagelink.art/es/robertinoc" }
+    ]
+  }
+}
