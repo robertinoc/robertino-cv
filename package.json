@@ -1,0 +1,17 @@
+{
+  "name": "robertino-cv",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "resume.robertino.world — web page + ATS PDF generated from resume.json",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "preview": "python3 -m http.server 8081 -d dist"
+  },
+  "dependencies": {
+    "pdfkit": "^0.20.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
