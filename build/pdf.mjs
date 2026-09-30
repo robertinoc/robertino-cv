@@ -69,8 +69,8 @@ export function buildPdf(data, lang, outPath) {
 
     // ── primitives ──────────────────────────────────────────────────────────
     const heading = (label) => {
-      ensure(64)
-      doc.moveDown(0.6)
+      ensure(44)
+      doc.moveDown(0.45)
       const y = doc.y + 3
       doc.rect(x, y, 18, 2).fill(C.indigo)                     // eyebrow bar (like .section-eyebrow::before)
       doc.font('displaySemi').fontSize(9.2).fillColor(C.indigo)
@@ -106,15 +106,15 @@ export function buildPdf(data, lang, outPath) {
         doc.fillColor(color).text(item, cx + padX, rowY + 2.7, { lineBreak: false })
         cx += cw + gap
       }
-      doc.y = rowY + h + 5
+      doc.y = rowY + h + 4
     }
 
     const bullet = (text) => {
       ensure(26)
       const y = doc.y
       doc.font('semi').fontSize(9).fillColor(C.indigo).text('•', x + 3, y, { lineBreak: false })
-      doc.font('body').fontSize(8.8).fillColor(C.text).text(text, x + 14, y, { width: w - 14, lineGap: 0.9 })
-      doc.y += 1.2
+      doc.font('body').fontSize(8.7).fillColor(C.text).text(text, x + 14, y, { width: w - 14, lineGap: 0.7 })
+      doc.y += 1
     }
 
     // role (bold) + date pill on the right; then company · location
@@ -133,6 +133,79 @@ export function buildPdf(data, lang, outPath) {
         doc.font('italic').fontSize(8.4).fillColor(C.muted).text(`   ${location}`, { link: null })
       }
       doc.y += 3
+    }
+
+
+    // chips row count for a given width (used to size the featured box before drawing it)
+    const chipRows = (items, width, { font = 'medium', size = 7.4 } = {}) => {
+      const padX = 5.5, gap = 3
+      doc.font(font).fontSize(size)
+      let cx = 0, rows = 1
+      for (const item of items) {
+        const cw = doc.widthOfString(item) + padX * 2
+        if (cx + cw > width && cx > 0) { cx = 0; rows++ }
+        cx += cw + gap
+      }
+      return rows
+    }
+
+    // Founder project as a featured timeline entry: tinted box with a left accent bar,
+    // FOUNDER label + date pill, tagline, focus chips and the URL. All real text.
+    const featuredEntry = (p) => {
+      const pad = 9, innerX = x + pad + 4, innerW = w - pad * 2 - 4
+      const dates = fmtRange(p.start, p.end, lang)
+      const tagline = t(p.tagline, lang)
+      // measure
+      doc.font('displaySemi').fontSize(10.4)
+      const roleH = doc.heightOfString(p.name, { width: innerW - 150 })
+      doc.font('body').fontSize(8.8)
+      const tagH = doc.heightOfString(tagline, { width: innerW, lineGap: 1 })
+      const rows = p.focus?.length ? chipRows(p.focus, innerW) : 0
+      const chipsH = rows ? rows * (12.5 + 3) + 4 : 0
+      const boxH = pad + roleH + 13 + 3 + tagH + 5 + chipsH + 12 + pad - 2
+      ensure(boxH + 4)
+      const y0 = doc.y
+      // box + accent bar
+      doc.roundedRect(x, y0, w, boxH, 6).fillAndStroke(TINTS.indigo.fill, TINTS.indigo.stroke)
+      const bar = doc.linearGradient(x, y0, x, y0 + boxH)
+      bar.stop(0, C.indigo).stop(1, C.teal)
+      doc.roundedRect(x, y0, 3.5, boxH, 1.5).fill(bar)
+      // header: name + pills
+      let cy = y0 + pad
+      doc.font('medium').fontSize(7.6)
+      const dw = doc.widthOfString(dates) + 14
+      const fw = doc.widthOfString(H.founder.toUpperCase()) + 14
+      doc.font('displaySemi').fontSize(10.4).fillColor(C.ink).text(p.name, innerX, cy, { width: innerW - dw - fw - 14, lineBreak: false })
+      pill(dates, x + w - pad, cy + 1)
+      // founder label pill (teal)
+      const fx = x + w - pad - dw - 5 - fw
+      doc.roundedRect(fx, cy, fw, 14, 7).fillAndStroke(TINTS.teal.fill, TINTS.teal.stroke)
+      doc.font('semi').fontSize(6.8).fillColor(C.teal).text(H.founder.toUpperCase(), fx + 7, cy + 3.6, { lineBreak: false, characterSpacing: 0.6 })
+      cy += roleH + 2
+      doc.font('semi').fontSize(8.8).fillColor(C.indigo)
+        .text(t(p.role, lang), innerX, cy, { continued: true, lineBreak: false })
+        .fillColor(C.faint).text('   ·   ', { continued: true, link: null })
+        .fillColor(C.indigo).text(p.display || strip(p.url), { link: p.url, underline: false, lineBreak: false })
+      cy += 14
+      doc.font('body').fontSize(8.8).fillColor(C.text).text(tagline, innerX, cy, { width: innerW, lineGap: 1 })
+      cy = doc.y + 5
+      if (rows) {
+        doc.y = cy
+        const savedX = x
+        // draw chips inside the box using the shared helper on a narrower column
+        const padX = 5.5, h = 12.5, gap = 3
+        doc.font('medium').fontSize(7.4)
+        let cx = innerX, rowY = cy
+        for (const item of p.focus) {
+          const cw = doc.widthOfString(item) + padX * 2
+          if (cx + cw > innerX + innerW) { cx = innerX; rowY += h + gap }
+          doc.roundedRect(cx, rowY, cw, h, 4).fillAndStroke('#ffffff', TINTS.teal.stroke)
+          doc.fillColor(C.teal).text(item, cx + padX, rowY + 2.7, { lineBreak: false })
+          cx += cw + gap
+        }
+        void savedX
+      }
+      doc.y = y0 + boxH + 5
     }
 
     // ── header ──────────────────────────────────────────────────────────────
@@ -167,12 +240,12 @@ export function buildPdf(data, lang, outPath) {
     const [lead, ...more] = data.summary[lang]
     doc.font('medium').fontSize(9.6).fillColor(C.ink).text(lead, x, doc.y, { width: w, lineGap: 1.6 })
     doc.moveDown(0.3)
-    doc.font('body').fontSize(9).fillColor(C.text).text(more.join(' '), x, doc.y, { width: w, lineGap: 1.4 })
+    doc.font('body').fontSize(8.9).fillColor(C.text).text(more.join(' '), x, doc.y, { width: w, lineGap: 1.2 })
 
     // ── Experience ──────────────────────────────────────────────────────────
     heading(H.experience)
     data.experience.forEach((e, i) => {
-      if (i) doc.moveDown(0.4)
+      if (i) doc.moveDown(0.3)
       entry({
         role: t(e.role, lang),
         org: t(e.company, lang),
@@ -186,21 +259,11 @@ export function buildPdf(data, lang, outPath) {
         doc.font('medium').fontSize(7.6).fillColor(C.faint).text(e.tools.join('  ·  '), x + 14, doc.y + 1, { width: w - 14, lineGap: 0.5 })
         doc.y += 1
       }
-    })
-
-    // ── Projects ────────────────────────────────────────────────────────────
-    heading(H.projects)
-    data.founderProjects.forEach((p, i) => {
-      if (i) doc.moveDown(0.5)
-      entry({
-        role: `${p.name} — ${t(p.role, lang)}`,
-        org: p.display || strip(p.url),
-        orgLink: p.url,
-        location: null,
-        dates: fmtRange(p.start, p.end, lang)
-      })
-      doc.font('body').fontSize(9).fillColor(C.text).text(t(p.tagline, lang), x, doc.y, { width: w, lineGap: 1.2 })
-      if (p.focus?.length) { doc.y += 4; chips(p.focus, { color: C.teal, fill: TINTS.teal.fill, stroke: TINTS.teal.stroke }) }
+      // founder projects right after the current role, as featured entries
+      if (i === 0) {
+        doc.moveDown(0.5)
+        data.founderProjects.forEach(featuredEntry)
+      }
     })
 
     // ── Skills ──────────────────────────────────────────────────────────────

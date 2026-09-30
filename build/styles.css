@@ -136,21 +136,6 @@ section { padding: 6rem 2rem; }
 .tl-tool { background: var(--light); border: 1px solid var(--border-light); color: var(--text-muted); padding: 0.22rem 0.65rem; border-radius: 6px; font-size: 0.73rem; font-weight: 500; transition: all 0.25s; }
 .tl-tool:hover { background: var(--indigo-dim); border-color: rgba(124,58,237,0.25); color: var(--indigo); }
 
-/* ================================================ FOUNDER PROJECTS */
-#projects { background: var(--white); }
-#projects .section-eyebrow { color: var(--teal); }
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
-.project-card { background: var(--light); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden; transition: transform 0.3s var(--ease), box-shadow 0.3s; }
-.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--indigo-light), var(--teal)); }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.09); }
-.project-head { display: flex; align-items: center; gap: 1rem; }
-.project-name { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--text); }
-.project-role { font-size: 0.8rem; color: var(--teal); font-weight: 600; }
-.project-desc { font-size: 0.9rem; color: var(--text); line-height: 1.7; flex: 1; }
-.project-card .tl-tools { margin-top: 0; }
-.project-link { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; font-size: 0.85rem; color: var(--indigo); }
-.project-link:hover { color: #6d28d9; }
-
 /* ================================================ SKILLS */
 #skills { background: var(--dark); position: relative; overflow: hidden; }
 #skills::after { content: ''; position: absolute; bottom: -20%; right: -5%; width: 55%; height: 80%; background: radial-gradient(ellipse, rgba(20,184,166,0.07) 0%, transparent 65%); pointer-events: none; }
@@ -298,3 +283,14 @@ footer { background: var(--dark-2); border-top: 1px solid var(--border); padding
   .btn { width: 100%; justify-content: center; }
   .btn small { display: none; }
 }
+
+/* ================================================ FEATURED (founder) timeline cards */
+.tl-card.featured { background: linear-gradient(135deg, rgba(124,58,237,0.07) 0%, rgba(20,184,166,0.07) 100%), var(--white); border-color: rgba(124,58,237,0.28); position: relative; overflow: hidden; }
+.tl-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--indigo-light), var(--teal)); }
+[data-theme="light"] .tl-card.featured { background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(20,184,166,0.08) 100%), var(--white); }
+.tl-card.featured:hover { border-color: rgba(124,58,237,0.45); box-shadow: 0 8px 36px rgba(124,58,237,0.12); }
+.tl-dot.featured { border-color: var(--indigo); box-shadow: 0 0 0 4px var(--indigo-dim); }
+.tl-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.tl-badge { display: inline-flex; align-items: center; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid rgba(20,184,166,0.35); padding: 0.22rem 0.6rem; border-radius: 100px; }
+.tl-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--indigo); font-weight: 600; font-size: 0.85rem; margin-top: 0.9rem; }
+.tl-link:hover { color: #6d28d9; }

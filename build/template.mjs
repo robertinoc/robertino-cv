@@ -4,15 +4,14 @@
 export const UI = {
   en: {
     htmlLang: 'en',
-    nav: { about: 'About', experience: 'Experience', projects: 'Projects', skills: 'Skills', education: 'Education', contact: 'Contact' },
+    nav: { about: 'About', experience: 'Experience', skills: 'Skills', education: 'Education', contact: 'Contact' },
     download: 'Download PDF', downloadHint: 'ATS-friendly, 2 pages',
     linkedin: 'LinkedIn', email: 'Email',
     present: 'Present',
     aboutEyebrow: 'Summary', aboutTitle: 'Growth, content and developer experience<br>for B2B tech',
     workingStyleLabel: 'Working style', languagesLabel: 'Languages',
-    expEyebrow: 'Career', expTitle: 'Experience', expSub: 'Reverse chronological. Every line is a thing that changed, not a job description.',
-    projEyebrow: 'Founder', projTitle: 'Founder projects', projSub: 'Two music-tech products I run alongside my role at Migbirds.',
-    visit: 'Visit',
+    expEyebrow: 'Career', expTitle: 'Experience', expSub: 'Reverse chronological. Every line is a thing that changed, not a job description. Highlighted cards are the products I founded and run alongside my role at Migbirds.',
+    founderBadge: 'Founder',
     skillsEyebrow: 'Toolkit', skillsTitle: 'Skills', skillsSub: 'Grouped by what they are for.',
     eduEyebrow: 'Education', eduTitle: 'Education', certLabel: 'Certification',
     beyondEyebrow: 'Beyond work', beyondTitle: 'Beyond work',
@@ -25,15 +24,14 @@ export const UI = {
   },
   es: {
     htmlLang: 'es',
-    nav: { about: 'Sobre mí', experience: 'Experiencia', projects: 'Proyectos', skills: 'Habilidades', education: 'Formación', contact: 'Contacto' },
+    nav: { about: 'Sobre mí', experience: 'Experiencia', skills: 'Habilidades', education: 'Formación', contact: 'Contacto' },
     download: 'Descargar PDF', downloadHint: 'Compatible con ATS, 2 páginas',
     linkedin: 'LinkedIn', email: 'Email',
     present: 'Actualidad',
     aboutEyebrow: 'Resumen', aboutTitle: 'Growth, contenido y developer experience<br>para B2B tech',
     workingStyleLabel: 'Estilo de trabajo', languagesLabel: 'Idiomas',
-    expEyebrow: 'Trayectoria', expTitle: 'Experiencia', expSub: 'En orden cronológico inverso. Cada línea es algo que cambió, no una descripción del puesto.',
-    projEyebrow: 'Fundador', projTitle: 'Proyectos propios', projSub: 'Dos productos music-tech que dirijo en paralelo a mi rol en Migbirds.',
-    visit: 'Visitar',
+    expEyebrow: 'Trayectoria', expTitle: 'Experiencia', expSub: 'En orden cronológico inverso. Cada línea es algo que cambió, no una descripción del puesto. Las tarjetas destacadas son los productos que fundé y dirijo en paralelo a mi rol en Migbirds.',
+    founderBadge: 'Fundador',
     skillsEyebrow: 'Herramientas', skillsTitle: 'Habilidades', skillsSub: 'Agrupadas según para qué sirven.',
     eduEyebrow: 'Formación', eduTitle: 'Formación', certLabel: 'Certificación',
     beyondEyebrow: 'Más allá del trabajo', beyondTitle: 'Más allá del trabajo',
@@ -124,6 +122,28 @@ function langScript(lang) {
   }}catch(e){}})();`
 }
 
+
+// ── Founder projects inside the timeline ──────────────────────────────────
+function founderBadge(ui) { return `<span class="tl-badge">${esc(ui.founderBadge)}</span>` }
+
+// Founder projects render as featured timeline cards right after the current role.
+function renderFounderTimelineCard(p, lang, ui, delay) {
+  return `
+      <article class="tl-item reveal${delay ? ` reveal-delay-${delay}` : ''}">
+        <div class="tl-dot featured">${logoOrInitials(p.logo, p.name)}</div>
+        <div class="tl-card featured">
+          <div class="tl-header">
+            <div class="tl-company"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.name)}</a></div>
+            <div class="tl-meta">${founderBadge(ui)}<span class="tl-period">${esc(fmtRange(p.start, p.end, lang))}</span></div>
+          </div>
+          <div class="tl-role">${esc(t(p.role, lang))}</div>
+          <p class="tl-desc">${esc(t(p.tagline, lang))}</p>
+          ${p.focus?.length ? `<div class="tl-tools">${p.focus.map(x => `<span class="tl-tool">${esc(x)}</span>`).join('')}</div>` : ''}
+          <a class="tl-link" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.display || p.url)} ${ICON.external}</a>
+        </div>
+      </article>`
+}
+
 export function renderPage(data, lang, { css, pdfFile }) {
   const ui = UI[lang]
   const title = t(data.meta.title, lang)
@@ -134,7 +154,7 @@ export function renderPage(data, lang, { css, pdfFile }) {
   const last = rest.join(' ')
   const nav = ui.nav
 
-  const experience = data.experience.map((e, i) => {
+  const experienceCards = data.experience.map((e, i) => {
     const company = t(e.company, lang)
     return `
       <article class="tl-item reveal${i ? ` reveal-delay-${Math.min(i, 3)}` : ''}">
@@ -152,21 +172,10 @@ export function renderPage(data, lang, { css, pdfFile }) {
           ${e.tools?.length ? `<div class="tl-tools">${e.tools.map(x => `<span class="tl-tool">${esc(x)}</span>`).join('')}</div>` : ''}
         </div>
       </article>`
-  }).join('\n')
-
-  const projects = data.founderProjects.map((p, i) => `
-      <article class="project-card reveal${i ? ` reveal-delay-${i}` : ''}">
-        <div class="project-head">
-          <div class="tl-dot project-logo">${logoOrInitials(p.logo, p.name)}</div>
-          <div>
-            <h3 class="project-name">${esc(p.name)}</h3>
-            <div class="project-role">${esc(t(p.role, lang))} · ${esc(fmtRange(p.start, p.end, lang))}</div>
-          </div>
-        </div>
-        <p class="project-desc">${esc(t(p.tagline, lang))}</p>
-        ${p.focus?.length ? `<div class="tl-tools">${p.focus.map(x => `<span class="tl-tool">${esc(x)}</span>`).join('')}</div>` : ''}
-        <a class="project-link" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.display || p.url)} ${ICON.external}</a>
-      </article>`).join('\n')
+  })
+  // Founder projects sit right after the current role (same period), featured.
+  experienceCards.splice(1, 0, ...data.founderProjects.map((p, i) => renderFounderTimelineCard(p, lang, ui, i + 1)))
+  const experience = experienceCards.join('\n')
 
   const skills = data.skills.map((g, i) => `
       <div class="skill-group reveal${i ? ` reveal-delay-${Math.min(i, 3)}` : ''}">
@@ -200,6 +209,7 @@ export function renderPage(data, lang, { css, pdfFile }) {
     `<span class="chip gray">${esc(t(l.name, lang))} (${esc(t(l.level, lang))})</span>`).join('')
 
   const summaryHtml = data.summary[lang].map(p => `<p>${esc(p)}</p>`).join('\n          ')
+
 
   return `<!DOCTYPE html>
 <html lang="${ui.htmlLang}">
@@ -247,7 +257,6 @@ ${css}
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">${esc(nav.about)}</a></li>
       <li><a href="#experience">${esc(nav.experience)}</a></li>
-      <li><a href="#projects">${esc(nav.projects)}</a></li>
       <li><a href="#skills">${esc(nav.skills)}</a></li>
       <li><a href="#education">${esc(nav.education)}</a></li>
       <li><a href="#contact">${esc(nav.contact)}</a></li>
@@ -314,16 +323,6 @@ ${experience}
   </div>
 </section>
 
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-eyebrow">${esc(ui.projEyebrow)}</div>
-    <h2 class="section-title">${esc(ui.projTitle)}</h2>
-    <p class="section-sub">${esc(ui.projSub)}</p>
-    <div class="projects-grid">
-${projects}
-    </div>
-  </div>
-</section>
 
 <section id="skills">
   <div class="section-inner">
