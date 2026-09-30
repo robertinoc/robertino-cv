@@ -32,8 +32,8 @@ const TINTS = {
 }
 
 const HEADINGS = {
-  en: { summary: 'Summary', experience: 'Experience', projects: 'Projects', skills: 'Skills', education: 'Education', certifications: 'Certifications', languages: 'Languages', interests: 'Interests', founder: 'Founder', page: 'Page' },
-  es: { summary: 'Resumen', experience: 'Experiencia', projects: 'Proyectos', skills: 'Habilidades', education: 'Formación', certifications: 'Certificaciones', languages: 'Idiomas', interests: 'Intereses', founder: 'Fundador', page: 'Página' }
+  en: { summary: 'Summary', experience: 'Experience', projects: 'Projects', skills: 'Skills', education: 'Education', certifications: 'Certifications', languages: 'Languages', interests: 'Interests', langInterests: 'Languages & Interests', founder: 'Founder', page: 'Page' },
+  es: { summary: 'Resumen', experience: 'Experiencia', projects: 'Proyectos', skills: 'Habilidades', education: 'Formación', certifications: 'Certificaciones', languages: 'Idiomas', interests: 'Intereses', langInterests: 'Idiomas e intereses', founder: 'Fundador', page: 'Página' }
 }
 
 const MAX_PAGES = Number(process.env.PDF_MAX_PAGES || 2)
@@ -43,7 +43,7 @@ export function buildPdf(data, lang, outPath) {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({
       size: 'A4',
-      margins: { top: 44, bottom: 50, left: 48, right: 48 },
+      margins: { top: 40, bottom: 46, left: 48, right: 48 },
       bufferPages: true,
       pdfVersion: '1.5',
       lang,
@@ -52,7 +52,7 @@ export function buildPdf(data, lang, outPath) {
         Title: `${data.name} – ${t(data.jobTitle, lang)}`,
         Author: data.name,
         Subject: t(data.meta.description, lang),
-        Keywords: data.skills.flatMap(g => g.items).join(', '),
+        Keywords: data.skills.flatMap(g => g.items || g.lines.flatMap(l => l.items)).join(', '),
         Creator: 'resume.robertino.world build'
       }
     })
@@ -69,8 +69,8 @@ export function buildPdf(data, lang, outPath) {
 
     // ── primitives ──────────────────────────────────────────────────────────
     const heading = (label) => {
-      ensure(44)
-      doc.moveDown(0.45)
+      ensure(40)
+      doc.moveDown(0.35)
       const y = doc.y + 3
       doc.rect(x, y, 18, 2).fill(C.indigo)                     // eyebrow bar (like .section-eyebrow::before)
       doc.font('displaySemi').fontSize(9.2).fillColor(C.indigo)
@@ -90,16 +90,16 @@ export function buildPdf(data, lang, outPath) {
       return pw
     }
 
-    const chips = (items, { color = C.muted, fill = C.light, stroke = C.border, font = 'medium', size = 7.4 } = {}) => {
-      const padX = 5.5, h = 12.5, gap = 3
+    const chips = (items, { color = C.muted, fill = C.light, stroke = C.border, font = 'medium', size = 7.2, x0 = x, width = w } = {}) => {
+      const padX = 5, h = 12, gap = 3
       doc.font(font).fontSize(size)
-      let cx = x
+      let cx = x0
       ensure(h + 4)
       let rowY = doc.y
       for (const item of items) {
         const cw = doc.widthOfString(item) + padX * 2
-        if (cx + cw > x + w) {                                   // wrap
-          cx = x; rowY += h + gap
+        if (cx + cw > x0 + width) {                              // wrap
+          cx = x0; rowY += h + gap
           if (rowY + h > bottom()) { doc.addPage(); rowY = doc.y }
         }
         doc.roundedRect(cx, rowY, cw, h, 4).fillAndStroke(fill, stroke)
@@ -113,8 +113,8 @@ export function buildPdf(data, lang, outPath) {
       ensure(26)
       const y = doc.y
       doc.font('semi').fontSize(9).fillColor(C.indigo).text('•', x + 3, y, { lineBreak: false })
-      doc.font('body').fontSize(8.7).fillColor(C.text).text(text, x + 14, y, { width: w - 14, lineGap: 0.7 })
-      doc.y += 1
+      doc.font('body').fontSize(8.7).fillColor(C.text).text(text, x + 14, y, { width: w - 14, lineGap: 0.45 })
+      doc.y += 0.8
     }
 
     // role (bold) + date pill on the right; then company · location
@@ -137,8 +137,8 @@ export function buildPdf(data, lang, outPath) {
 
 
     // chips row count for a given width (used to size the featured box before drawing it)
-    const chipRows = (items, width, { font = 'medium', size = 7.4 } = {}) => {
-      const padX = 5.5, gap = 3
+    const chipRows = (items, width, { font = 'medium', size = 7.2 } = {}) => {
+      const padX = 5, gap = 3
       doc.font(font).fontSize(size)
       let cx = 0, rows = 1
       for (const item of items) {
@@ -161,7 +161,7 @@ export function buildPdf(data, lang, outPath) {
       doc.font('body').fontSize(8.8)
       const tagH = doc.heightOfString(tagline, { width: innerW, lineGap: 1 })
       const rows = p.focus?.length ? chipRows(p.focus, innerW) : 0
-      const chipsH = rows ? rows * (12.5 + 3) + 4 : 0
+      const chipsH = rows ? rows * (12 + 3) + 4 : 0
       const boxH = pad + roleH + 13 + 3 + tagH + 5 + chipsH + 12 + pad - 2
       ensure(boxH + 4)
       const y0 = doc.y
@@ -193,8 +193,8 @@ export function buildPdf(data, lang, outPath) {
         doc.y = cy
         const savedX = x
         // draw chips inside the box using the shared helper on a narrower column
-        const padX = 5.5, h = 12.5, gap = 3
-        doc.font('medium').fontSize(7.4)
+        const padX = 5, h = 12, gap = 3
+        doc.font('medium').fontSize(7.2)
         let cx = innerX, rowY = cy
         for (const item of p.focus) {
           const cw = doc.widthOfString(item) + padX * 2
@@ -238,14 +238,14 @@ export function buildPdf(data, lang, outPath) {
     // ── Summary ─────────────────────────────────────────────────────────────
     heading(H.summary)
     const [lead, ...more] = data.summary[lang]
-    doc.font('medium').fontSize(9.6).fillColor(C.ink).text(lead, x, doc.y, { width: w, lineGap: 1.6 })
+    doc.font('medium').fontSize(9.4).fillColor(C.ink).text(lead, x, doc.y, { width: w, lineGap: 1.3 })
     doc.moveDown(0.3)
     doc.font('body').fontSize(8.9).fillColor(C.text).text(more.join(' '), x, doc.y, { width: w, lineGap: 1.2 })
 
     // ── Experience ──────────────────────────────────────────────────────────
     heading(H.experience)
     data.experience.forEach((e, i) => {
-      if (i) doc.moveDown(0.3)
+      if (i) doc.moveDown(0.22)
       entry({
         role: t(e.role, lang),
         org: t(e.company, lang),
@@ -256,8 +256,7 @@ export function buildPdf(data, lang, outPath) {
       e.bullets[lang].forEach(bullet)
       if (e.tools?.length) {
         ensure(14)
-        doc.font('medium').fontSize(7.6).fillColor(C.faint).text(e.tools.join('  ·  '), x + 14, doc.y + 1, { width: w - 14, lineGap: 0.5 })
-        doc.y += 1
+        doc.font('medium').fontSize(7.6).fillColor(C.faint).text(e.tools.join('  ·  '), x + 14, doc.y + 0.5, { width: w - 14, lineGap: 0.5 })
       }
       // founder projects right after the current role, as featured entries
       if (i === 0) {
@@ -269,13 +268,37 @@ export function buildPdf(data, lang, outPath) {
     // ── Skills ──────────────────────────────────────────────────────────────
     heading(H.skills)
     data.skills.forEach((g, i) => {
+      const col = GROUP_COLORS[g.color] || C.muted
+      const tint = TINTS[g.color] || TINTS.white
+      if (g.featured) {
+        // tinted box: title, then one compact text line per family ("Label: item, item, …")
+        const pad = 9, innerX = x + pad + 4, innerW = w - pad * 2 - 4, labelW = 74
+        doc.font('body').fontSize(8.4)
+        const linesH = g.lines.reduce((acc, l) => acc + doc.heightOfString(l.items.join(', '), { width: innerW - labelW, lineGap: 0.5 }) + 3, 0)
+        const boxH = pad + 14 + linesH + pad - 3
+        ensure(boxH + 6)
+        if (i) doc.y += 3
+        const y0 = doc.y
+        doc.roundedRect(x, y0, w, boxH, 6).fillAndStroke(tint.fill, tint.stroke)
+        const bar = doc.linearGradient(x, y0, x, y0 + boxH)
+        bar.stop(0, C.indigo).stop(1, C.teal)
+        doc.roundedRect(x, y0, 3.5, boxH, 1.5).fill(bar)
+        doc.font('displaySemi').fontSize(7.8).fillColor(col)
+          .text(t(g.group, lang).toUpperCase(), innerX, y0 + pad, { characterSpacing: 1, lineBreak: false })
+        let ly = y0 + pad + 14
+        g.lines.forEach(l => {
+          doc.font('semi').fontSize(8.2).fillColor(col).text(t(l.label, lang), innerX, ly, { width: labelW - 6, lineBreak: false })
+          doc.font('body').fontSize(8.4).fillColor(C.text).text(l.items.join(', '), innerX + labelW, ly, { width: innerW - labelW, lineGap: 0.5 })
+          ly = doc.y + 3
+        })
+        doc.y = y0 + boxH + 5
+        return
+      }
       ensure(40)
       if (i) doc.y += 2
-      const col = GROUP_COLORS[g.color] || C.muted
       doc.font('displaySemi').fontSize(7.8).fillColor(col)
         .text(t(g.group, lang).toUpperCase(), x, doc.y, { characterSpacing: 1, lineBreak: false })
       doc.y += 11
-      const tint = TINTS[g.color] || TINTS.white
       chips(g.items, { color: col, fill: tint.fill, stroke: tint.stroke })
     })
 
@@ -289,14 +312,13 @@ export function buildPdf(data, lang, outPath) {
       doc.font('body').fillColor(C.text).text(data.certifications.map(c => `${t(c.name, lang)}, ${c.year}`).join(' · '))
     }
 
-    // ── Languages ───────────────────────────────────────────────────────────
-    heading(H.languages)
-    doc.font('body').fontSize(9).fillColor(C.text).text(
-      data.languages.map(l => `${t(l.name, lang)} (${t(l.level, lang)})`).join('   ·   '), x, doc.y, { width: w })
-
-    // ── Interests ───────────────────────────────────────────────────────────
-    heading(H.interests)
-    doc.font('body').fontSize(9).fillColor(C.text).text(t(data.beyondWork, lang), x, doc.y, { width: w, continued: true })
+    // ── Languages & Interests (one compact section) ─────────────────────────
+    heading(H.langInterests)
+    doc.font('semi').fontSize(8.8).fillColor(C.text).text(`${H.languages}: `, x, doc.y, { continued: true })
+    doc.font('body').fillColor(C.text).text(data.languages.map(l => `${t(l.name, lang)} (${t(l.level, lang)})`).join('  ·  '))
+    doc.y += 2
+    doc.font('semi').fontSize(8.8).fillColor(C.text).text(`${H.interests}: `, x, doc.y, { continued: true })
+    doc.font('body').fillColor(C.text).text(t(data.beyondWork, lang), { continued: true })
     for (const l of data.beyondWork.links || []) {
       doc.fillColor(C.faint).text('  ', { continued: true, link: null })
       doc.font('semi').fillColor(C.indigo).text(strip(l.url), { continued: true, link: l.url, underline: false })
