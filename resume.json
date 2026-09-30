@@ -5,7 +5,10 @@
     "url": "https://resume.robertino.world",
     "home": "https://robertino.world",
     "ogImage": "/profile.jpg",
-    "pdf": { "en": "Robertino-Calcaterra-Resume.pdf", "es": "Robertino-Calcaterra-CV-ES.pdf" }
+    "pdf": {
+      "en": "Robertino-Calcaterra-Resume.pdf",
+      "es": "Robertino-Calcaterra-CV-ES.pdf"
+    }
   },
   "meta": {
     "title": {
@@ -25,8 +28,14 @@
     "en": "Growth & Product Marketing at Migbirds · Founder of StageLink and EnergyCurve · Ex-Auth0/Okta",
     "es": "Growth & Product Marketing en Migbirds · Fundador de StageLink y EnergyCurve · Ex-Auth0/Okta"
   },
-  "jobTitle": { "en": "Growth & Product Marketing", "es": "Growth & Product Marketing" },
-  "location": { "en": "Corrientes, Argentina · Remote", "es": "Corrientes, Argentina · Remoto" },
+  "jobTitle": {
+    "en": "Growth & Product Marketing",
+    "es": "Growth & Product Marketing"
+  },
+  "location": {
+    "en": "Corrientes, Argentina · Remote",
+    "es": "Corrientes, Argentina · Remoto"
+  },
   "contact": {
     "email": "robertinoc@gmail.com",
     "linkedin": "https://www.linkedin.com/in/robertinocalcaterra"
@@ -44,7 +53,10 @@
     ]
   },
   "workingStyle": {
-    "source": { "en": "Verified behavioral profile · Migbirds, March 2026", "es": "Perfil conductual verificado · Migbirds, marzo 2026" },
+    "source": {
+      "en": "Verified behavioral profile · Migbirds, March 2026",
+      "es": "Perfil conductual verificado · Migbirds, marzo 2026"
+    },
     "en": "Participative primary profile, Organizer secondary: collaborative, inclusive and decisive. Strongest traits in the test: creativity, support and logic. Assertiveness centered at 90%.",
     "es": "Perfil principal Participativo, secundario Gestor: colaborativo, inclusivo y decisivo. Rasgos más fuertes en el test: creatividad, apoyo y lógica. Asertividad centrada al 90%."
   },
@@ -53,10 +65,16 @@
       "company": "Migbirds",
       "url": "https://migbirds.com",
       "logo": "/logos/migbirds.png",
-      "role": { "en": "Growth & Product Marketing", "es": "Growth & Product Marketing" },
+      "role": {
+        "en": "Growth & Product Marketing",
+        "es": "Growth & Product Marketing"
+      },
       "start": "2026-01",
       "end": null,
-      "location": { "en": "Remote", "es": "Remoto" },
+      "location": {
+        "en": "Remote",
+        "es": "Remoto"
+      },
       "bullets": {
         "en": [
           "Define the platform's positioning and product communication together with the founding team.",
@@ -71,16 +89,28 @@
           "Planifico la documentación de QA y las auditorías de privacidad y seguridad antes de cada release."
         ]
       },
-      "tools": ["Product positioning", "Go-to-market", "Content strategy", "Competitive research", "QA planning"]
+      "tools": [
+        "Product positioning",
+        "Go-to-market",
+        "Content strategy",
+        "Competitive research",
+        "QA planning"
+      ]
     },
     {
       "company": "Auth0 (Okta)",
       "url": "https://auth0.com",
       "logo": "/logos/auth0.png",
-      "role": { "en": "Senior Program Analyst, Technical Content", "es": "Senior Program Analyst, Technical Content" },
+      "role": {
+        "en": "Senior Program Analyst, Technical Content",
+        "es": "Senior Program Analyst, Technical Content"
+      },
       "start": "2022-04",
       "end": "2025-06",
-      "location": { "en": "Argentina · Remote", "es": "Argentina · Remoto" },
+      "location": {
+        "en": "Argentina · Remote",
+        "es": "Argentina · Remoto"
+      },
       "bullets": {
         "en": [
           "Led developer content strategy and operations for identity and security platforms in a global B2B environment, owning the end-to-end lifecycle: editorial planning, topic selection, production workflows and quality assurance.",
@@ -95,16 +125,31 @@
           "Medí el rendimiento con Google Analytics, Looker Studio y tracking UTM, y usé los resultados para iterar contenido y estrategia."
         ]
       },
-      "tools": ["Contentful", "Asana", "Airtable", "Confluence", "Monday.com", "Google Analytics", "Looker Studio", "Rebrandly"]
+      "tools": [
+        "Contentful",
+        "Asana",
+        "Airtable",
+        "Confluence",
+        "Monday.com",
+        "Google Analytics",
+        "Looker Studio",
+        "Rebrandly"
+      ]
     },
     {
       "company": "Auth0",
       "url": "https://auth0.com",
       "logo": "/logos/auth0.png",
-      "role": { "en": "Developer Marketing Content", "es": "Developer Marketing Content" },
+      "role": {
+        "en": "Developer Marketing Content",
+        "es": "Developer Marketing Content"
+      },
       "start": "2018-07",
       "end": "2022-04",
-      "location": { "en": "Buenos Aires, Argentina · Remote", "es": "Buenos Aires, Argentina · Remoto" },
+      "location": {
+        "en": "Buenos Aires, Argentina · Remote",
+        "es": "Buenos Aires, Argentina · Remoto"
+      },
       "bullets": {
         "en": [
           "Ran production workflows and quality assurance for developer-facing content on identity and security.",
@@ -117,16 +162,27 @@
           "Colaboré con ingeniería, diseño, producto y marketing para mantener el contenido preciso y alineado con los objetivos del negocio."
         ]
       },
-      "tools": ["Developer marketing", "Technical writing", "Community distribution", "Editorial QA"]
+      "tools": [
+        "Developer marketing",
+        "Technical writing",
+        "Community distribution",
+        "Editorial QA"
+      ]
     },
     {
       "company": "Nuevo Banco del Chaco S.A.",
       "url": null,
       "logo": null,
-      "role": { "en": "Senior Software Quality Analyst", "es": "Senior Software Quality Analyst" },
+      "role": {
+        "en": "Senior Software Quality Analyst",
+        "es": "Senior Software Quality Analyst"
+      },
       "start": "2016-05",
       "end": "2019-11",
-      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" },
+      "location": {
+        "en": "Resistencia, Argentina",
+        "es": "Resistencia, Argentina"
+      },
       "bullets": {
         "en": [
           "Designed and executed end-to-end manual test cases for banking applications.",
@@ -141,16 +197,31 @@
           "Produje reportes y participé en las ceremonias diarias de Agile."
         ]
       },
-      "tools": ["Manual testing", "Test documentation", "Agile", "SQL (basic)", "MS Excel"]
+      "tools": [
+        "Manual testing",
+        "Test documentation",
+        "Agile",
+        "SQL (basic)",
+        "MS Excel"
+      ]
     },
     {
-      "company": { "en": "Self-employed", "es": "Independiente" },
+      "company": {
+        "en": "Self-employed",
+        "es": "Independiente"
+      },
       "url": null,
       "logo": null,
-      "role": { "en": "Freelance Web Developer & Designer", "es": "Desarrollador y diseñador web freelance" },
+      "role": {
+        "en": "Freelance Web Developer & Designer",
+        "es": "Desarrollador y diseñador web freelance"
+      },
       "start": "2012",
       "end": "2016",
-      "location": { "en": "Corrientes, Argentina · Remote", "es": "Corrientes, Argentina · Remoto" },
+      "location": {
+        "en": "Corrientes, Argentina · Remote",
+        "es": "Corrientes, Argentina · Remoto"
+      },
       "bullets": {
         "en": [
           "Designed and developed responsive websites on Joomla, WordPress and Contentful, including site content and optimization.",
@@ -165,16 +236,29 @@
           "Capacité a clientes en el uso del CMS y brindé soporte continuo."
         ]
       },
-      "tools": ["Web design", "CMS", "SEO", "Hosting", "cPanel", "Branding"]
+      "tools": [
+        "Web design",
+        "CMS",
+        "SEO",
+        "Hosting",
+        "cPanel",
+        "Branding"
+      ]
     },
     {
       "company": "Universidad Tecnológica Nacional (UTN FRRe)",
       "url": "https://www.frre.utn.edu.ar",
       "logo": "/logos/utn.jpg",
-      "role": { "en": "Assistant Professor, Computer Architecture · Student Mentor", "es": "Auxiliar docente, Arquitectura de Computadoras · Tutor de estudiantes" },
+      "role": {
+        "en": "Assistant Professor, Computer Architecture · Student Mentor",
+        "es": "Auxiliar docente, Arquitectura de Computadoras · Tutor de estudiantes"
+      },
       "start": "2011-08",
       "end": "2015-01",
-      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" },
+      "location": {
+        "en": "Resistencia, Argentina",
+        "es": "Resistencia, Argentina"
+      },
       "bullets": {
         "en": [
           "Taught theory and practice for the Computer Architecture course in the first year of Systems Engineering.",
@@ -189,7 +273,12 @@
           "Participé en el proyecto de investigación educativa del GIE \"Explorando nuevas herramientas para el aprendizaje en entornos universitarios\"."
         ]
       },
-      "tools": ["Pedagogy", "Moodle", "Curriculum design", "Research"]
+      "tools": [
+        "Pedagogy",
+        "Moodle",
+        "Curriculum design",
+        "Research"
+      ]
     }
   ],
   "founderProjects": [
@@ -198,76 +287,228 @@
       "url": "https://stagelink.art",
       "display": "stagelink.art",
       "logo": "/logos/stagelink.png",
-      "role": { "en": "CEO & Founder", "es": "CEO y Fundador" },
+      "role": {
+        "en": "CEO & Founder",
+        "es": "CEO y Fundador"
+      },
       "start": "2026-01",
       "end": null,
       "tagline": {
         "en": "Music-tech platform where DJs, producers and electronic artists build professional artist pages, EPKs and digital profiles designed for discovery, credibility and bookings.",
         "es": "Plataforma music-tech donde DJs, productores y artistas de música electrónica crean páginas de artista, EPKs y perfiles digitales pensados para descubrimiento, credibilidad y bookings."
       },
-      "focus": ["Product strategy", "Brand positioning", "Go-to-market", "Artist growth", "Creator tools"]
+      "focus": [
+        "Product strategy",
+        "Brand positioning",
+        "Go-to-market",
+        "Artist growth",
+        "Creator tools"
+      ]
     },
     {
       "name": "EnergyCurve",
       "url": "https://energycurve.app",
       "display": "energycurve.app",
       "logo": null,
-      "role": { "en": "CEO & Founder", "es": "CEO y Fundador" },
+      "role": {
+        "en": "CEO & Founder",
+        "es": "CEO y Fundador"
+      },
       "start": "2026-01",
       "end": null,
       "tagline": {
         "en": "Music-tech SaaS that shows DJs the shape of a set before they play it: paste a tracklist or import from Rekordbox or Traktor and get the energy curve. Free browser tools, no account, audio never leaves the DJ's computer. Part of the StageLink family.",
         "es": "SaaS music-tech que muestra a los DJs la forma de un set antes de tocarlo: pegás un tracklist o importás desde Rekordbox o Traktor y obtenés la curva de energía. Herramientas gratis en el navegador, sin cuenta, y el audio nunca sale de la computadora del DJ. Parte de la familia StageLink."
       },
-      "focus": ["Product strategy", "Positioning", "Content & SEO", "Go-to-market", "First 100 users, no paid promotion"]
+      "focus": [
+        "Product strategy",
+        "Positioning",
+        "Content & SEO",
+        "Go-to-market",
+        "First 100 users, no paid promotion"
+      ]
     }
   ],
   "skills": [
     {
-      "group": { "en": "Growth & content", "es": "Growth y contenido" },
+      "group": {
+        "en": "Growth & content",
+        "es": "Growth y contenido"
+      },
       "color": "indigo",
-      "items": ["Content strategy", "Editorial planning", "Technical writing", "Developer marketing", "Community distribution", "SEO", "Brand positioning", "Go-to-market", "Competitive research", "Performance reporting"]
+      "items": [
+        "Content strategy",
+        "Editorial planning",
+        "Technical writing",
+        "Developer marketing",
+        "Community distribution",
+        "SEO",
+        "Brand positioning",
+        "Go-to-market",
+        "Competitive research",
+        "Performance reporting"
+      ]
     },
     {
-      "group": { "en": "Product & DevEx", "es": "Producto y DevEx" },
+      "group": {
+        "en": "Product & DevEx",
+        "es": "Producto y DevEx"
+      },
       "color": "teal",
-      "items": ["Product marketing", "Product positioning", "Roadmap planning", "Developer experience", "QA planning", "Manual testing", "Test documentation", "HTML & CSS", "CMS (Contentful, WordPress, Joomla)"]
+      "items": [
+        "Product marketing",
+        "Product positioning",
+        "Roadmap planning",
+        "Developer experience",
+        "QA planning",
+        "Manual testing",
+        "Test documentation",
+        "HTML & CSS",
+        "CMS (Contentful, WordPress, Joomla)"
+      ]
     },
     {
-      "group": { "en": "Tools", "es": "Herramientas" },
+      "group": {
+        "en": "Tools",
+        "es": "Herramientas"
+      },
       "color": "amber",
-      "items": ["Contentful", "Asana", "Airtable", "Confluence", "Monday.com", "Google Analytics", "Looker Studio", "Rebrandly", "Canva", "Photoshop", "Illustrator", "Moodle"]
+      "items": [
+        "Contentful",
+        "Asana",
+        "Airtable",
+        "Confluence",
+        "Monday.com",
+        "Google Analytics",
+        "Looker Studio",
+        "Rebrandly",
+        "Canva",
+        "Photoshop",
+        "Illustrator",
+        "Moodle"
+      ]
     },
     {
-      "group": { "en": "AI-assisted workflows", "es": "Flujos de trabajo con IA" },
-      "color": "white",
-      "items": ["AI tools in editorial workflows", "AI-assisted content production", "AI-assisted documentation", "AI-assisted QA planning", "AI-driven growth operations"]
+      "group": {
+        "en": "AI",
+        "es": "IA"
+      },
+      "color": "indigo",
+      "featured": true,
+      "lines": [
+        {
+          "label": {
+            "en": "Anthropic",
+            "es": "Anthropic"
+          },
+          "items": [
+            "Claude",
+            "Claude Code",
+            "Claude Cowork",
+            "Claude Design"
+          ]
+        },
+        {
+          "label": {
+            "en": "OpenAI",
+            "es": "OpenAI"
+          },
+          "items": [
+            "ChatGPT",
+            "Codex"
+          ]
+        },
+        {
+          "label": {
+            "en": "Google",
+            "es": "Google"
+          },
+          "items": [
+            "Gemini",
+            "Nano Banana"
+          ]
+        },
+        {
+          "label": {
+            "en": "Workflows",
+            "es": "Flujos de trabajo"
+          },
+          "items": [
+            "Notion AI",
+            "MCP connectors (Notion, Google Workspace, Asana, Slack)",
+            "Custom skills & scheduled agents",
+            "Agent workflows & content pipelines"
+          ]
+        },
+        {
+          "label": {
+            "en": "Know-how",
+            "es": "Conocimientos"
+          },
+          "items": [
+            "Prompt engineering & reusable skills",
+            "AI-assisted content, documentation & QA planning",
+            "Human review of AI output",
+            "Responsible use: privacy & data"
+          ]
+        }
+      ]
     }
   ],
   "education": [
     {
-      "degree": { "en": "University Systems Analyst", "es": "Analista Universitario en Sistemas" },
+      "degree": {
+        "en": "University Systems Analyst",
+        "es": "Analista Universitario en Sistemas"
+      },
       "school": "Universidad Tecnológica Nacional (UTN)",
       "start": "2002",
       "end": "2009",
-      "location": { "en": "Resistencia, Argentina", "es": "Resistencia, Argentina" }
+      "location": {
+        "en": "Resistencia, Argentina",
+        "es": "Resistencia, Argentina"
+      }
     }
   ],
   "certifications": [
     {
-      "name": { "en": "Certified Yoga Teacher (international)", "es": "Profesor de Yoga certificado (internacional)" },
+      "name": {
+        "en": "Certified Yoga Teacher (international)",
+        "es": "Profesor de Yoga certificado (internacional)"
+      },
       "year": "2020"
     }
   ],
   "languages": [
-    { "name": { "en": "Spanish", "es": "Español" }, "level": { "en": "Native", "es": "Nativo" } },
-    { "name": { "en": "English", "es": "Inglés" }, "level": { "en": "Professional", "es": "Profesional" } }
+    {
+      "name": {
+        "en": "Spanish",
+        "es": "Español"
+      },
+      "level": {
+        "en": "Native",
+        "es": "Nativo"
+      }
+    },
+    {
+      "name": {
+        "en": "English",
+        "es": "Inglés"
+      },
+      "level": {
+        "en": "Professional",
+        "es": "Profesional"
+      }
+    }
   ],
   "beyondWork": {
     "en": "Certified yoga teacher. DJ and electronic music producer as ROBERTINOC.",
     "es": "Profesor de yoga certificado. DJ y productor de música electrónica como ROBERTINOC.",
     "links": [
-      { "label": "ROBERTINOC", "url": "https://stagelink.art/es/robertinoc" }
+      {
+        "label": "ROBERTINOC",
+        "url": "https://stagelink.art/es/robertinoc"
+      }
     ]
   }
 }

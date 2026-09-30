@@ -177,11 +177,26 @@ export function renderPage(data, lang, { css, pdfFile }) {
   experienceCards.splice(1, 0, ...data.founderProjects.map((p, i) => renderFounderTimelineCard(p, lang, ui, i + 1)))
   const experience = experienceCards.join('\n')
 
-  const skills = data.skills.map((g, i) => `
-      <div class="skill-group reveal${i ? ` reveal-delay-${Math.min(i, 3)}` : ''}">
+  const skills = data.skills.map((g, i) => {
+    const delay = i ? ` reveal-delay-${Math.min(i, 3)}` : ''
+    if (g.featured) {
+      // Full-width featured group with labelled chip rows (e.g. AI tools & know-how)
+      return `
+      <div class="skill-group featured reveal${delay}">
+        <div class="sg-title c-${esc(g.color)}">${esc(t(g.group, lang))}</div>
+        ${g.lines.map(l => `
+        <div class="sg-line">
+          <div class="sg-line-label">${esc(t(l.label, lang))}</div>
+          <div class="sk-chips">${l.items.map(x => `<span class="sk-chip c-${esc(g.color)}">${esc(x)}</span>`).join('')}</div>
+        </div>`).join('')}
+      </div>`
+    }
+    return `
+      <div class="skill-group reveal${delay}">
         <div class="sg-title c-${esc(g.color)}">${esc(t(g.group, lang))}</div>
         <div class="sk-chips">${g.items.map(x => `<span class="sk-chip c-${esc(g.color)}">${esc(x)}</span>`).join('')}</div>
-      </div>`).join('\n')
+      </div>`
+  }).join('\n')
 
   const education = data.education.map(e => `
       <div class="edu-card reveal">
