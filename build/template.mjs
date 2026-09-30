@@ -217,8 +217,10 @@ export function renderPage(data, lang, { css, pdfFile }) {
         </div>
       </div>`).join('\n')
 
-  const beyondLinks = (data.beyondWork.links || []).map(l =>
-    `<a href="${esc(l.url)}" target="_blank" rel="noopener" class="beyond-link">${esc(l.label)} ${ICON.external}</a>`).join(' ')
+  // beyondWork text carries {LABEL} placeholders that become links (see resume.json)
+  const beyondHtml = (data.beyondWork.links || []).reduce((html, l) =>
+    html.split(`{${l.label}}`).join(`<a href="${esc(l.url)}" target="_blank" rel="noopener" class="beyond-link">${esc(l.label)} ${ICON.external}</a>`),
+    esc(t(data.beyondWork, lang)))
 
   const languages = data.languages.map(l =>
     `<span class="chip gray">${esc(t(l.name, lang))} (${esc(t(l.level, lang))})</span>`).join('')
@@ -364,7 +366,7 @@ ${certifications}
 <section id="beyond">
   <div class="section-inner">
     <div class="section-eyebrow">${esc(ui.beyondEyebrow)}</div>
-    <p class="beyond-line reveal">${esc(t(data.beyondWork, lang))} ${beyondLinks}</p>
+    <p class="beyond-line reveal">${beyondHtml}</p>
   </div>
 </section>
 
