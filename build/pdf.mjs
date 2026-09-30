@@ -74,7 +74,7 @@ export function buildPdf(data, lang, outPath) {
       const y = doc.y + 3
       doc.rect(x, y, 18, 2).fill(C.indigo)                     // eyebrow bar (like .section-eyebrow::before)
       doc.font('displaySemi').fontSize(9.2).fillColor(C.indigo)
-        .text(label.toUpperCase(), x + 26, y - 4, { width: w - 26, characterSpacing: 1.3, lineBreak: false })
+        .text(label.toUpperCase(), x + 26, y - 4, { width: w - 26, characterSpacing: 0.8, lineBreak: false })
       const ry = y + 12
       doc.moveTo(x, ry).lineTo(x + w, ry).lineWidth(0.6).strokeColor(C.border).stroke()
       doc.y = ry + 8
@@ -318,11 +318,15 @@ export function buildPdf(data, lang, outPath) {
     doc.font('body').fillColor(C.text).text(data.languages.map(l => `${t(l.name, lang)} (${t(l.level, lang)})`).join('  ·  '))
     doc.y += 2
     doc.font('semi').fontSize(8.8).fillColor(C.text).text(`${H.interests}: `, x, doc.y, { continued: true })
-    doc.font('body').fillColor(C.text).text(t(data.beyondWork, lang), { continued: true })
-    for (const l of data.beyondWork.links || []) {
-      doc.fillColor(C.faint).text('  ', { continued: true, link: null })
-      doc.font('semi').fillColor(C.indigo).text(strip(l.url), { continued: true, link: l.url, underline: false })
-    }
+    // {LABEL} placeholders in the text become inline links
+    const links = data.beyondWork.links || []
+    const parts = t(data.beyondWork, lang).split(/(\{[^}]+\})/)
+    parts.forEach(part => {
+      const m = part.match(/^\{(.+)\}$/)
+      const l = m && links.find(k => k.label === m[1])
+      if (l) doc.font('semi').fillColor(C.indigo).text(l.label, { continued: true, link: l.url, underline: false })
+      else if (part) doc.font('body').fillColor(C.text).text(part, { continued: true, link: null })
+    })
     doc.text('', { continued: false, link: null })
 
     // ── page count guard + footers ──────────────────────────────────────────

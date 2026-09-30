@@ -502,8 +502,9 @@
     }
   ],
   "beyondWork": {
-    "en": "Certified yoga teacher. DJ and electronic music producer as ROBERTINOC.",
-    "es": "Profesor de yoga certificado. DJ y productor de música electrónica como ROBERTINOC.",
+    "$comment": "{ROBERTINOC} is replaced by the matching link below (label must match).",
+    "en": "Certified yoga teacher. DJ and electronic music producer as {ROBERTINOC}.",
+    "es": "Profesor de yoga certificado. DJ y productor de música electrónica como {ROBERTINOC}.",
     "links": [
       {
         "label": "ROBERTINOC",
