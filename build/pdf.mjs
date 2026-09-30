@@ -74,7 +74,7 @@ export function buildPdf(data, lang, outPath) {
       const y = doc.y + 3
       doc.rect(x, y, 18, 2).fill(C.indigo)                     // eyebrow bar (like .section-eyebrow::before)
       doc.font('displaySemi').fontSize(9.2).fillColor(C.indigo)
-        .text(label.toUpperCase(), x + 26, y - 4, { width: w - 26, characterSpacing: 1.3, lineBreak: false })
+        .text(label.toUpperCase(), x + 26, y - 4, { width: w - 26, characterSpacing: 0.8, lineBreak: false })
       const ry = y + 12
       doc.moveTo(x, ry).lineTo(x + w, ry).lineWidth(0.6).strokeColor(C.border).stroke()
       doc.y = ry + 8
