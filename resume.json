@@ -40,6 +40,26 @@
     "email": "robertinoc@gmail.com",
     "linkedin": "https://www.linkedin.com/in/robertinocalcaterra"
   },
+  "entity": {
+    "$comment": "Schema.org Person identity. Must match the Person JSON-LD on robertino.world (same @id, sameAs and knowsAbout) so search engines treat both pages as one entity. sameAs lists profiles OF the person only, not pages or products about them.",
+    "id": "https://robertino.world/#person",
+    "url": "https://robertino.world",
+    "givenName": "Robertino",
+    "familyName": "Calcaterra",
+    "sameAs": [
+      "https://www.linkedin.com/in/robertinocalcaterra",
+      "https://www.instagram.com/robertinook",
+      "https://stagelink.art/es/robertinoc",
+      "https://github.com/robertinoc"
+    ],
+    "knowsAbout": [
+      "Growth marketing",
+      "Product marketing",
+      "Developer experience",
+      "Content strategy",
+      "SEO"
+    ]
+  },
   "summary": {
     "en": [
       "Growth and product marketing operator for B2B tech platforms, with seven years at Auth0/Okta running developer content strategy and operations at global scale.",

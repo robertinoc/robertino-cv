@@ -94,19 +94,29 @@ const ICON = {
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23a78bfa'/%3E%3Cstop offset='1' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230d1117'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Sora,Inter,Arial,sans-serif' font-weight='800' font-size='30' fill='url(%23g)'%3ERC%3C/text%3E%3C/svg%3E"
 
 function jsonLd(data, lang) {
+  // One entity shared with robertino.world: same @id, url, sameAs and
+  // knowsAbout (see resume.json → entity). This page is the main page ABOUT
+  // the person, so it goes in mainEntityOfPage, never in sameAs.
+  const e = data.entity
+  const schools = data.education.map(ed => ({ '@type': 'CollegeOrUniversity', name: ed.school }))
   const ld = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': e.id,
     name: data.name,
-    url: data.site.url + (lang === 'es' ? '/es/' : '/'),
+    givenName: e.givenName,
+    familyName: e.familyName,
+    url: e.url,
+    mainEntityOfPage: data.site.url + (lang === 'es' ? '/es/' : '/'),
     image: data.site.url + data.site.ogImage,
     jobTitle: t(data.jobTitle, lang),
     description: t(data.meta.description, lang),
     email: `mailto:${data.contact.email}`,
     worksFor: { '@type': 'Organization', name: 'Migbirds', url: 'https://migbirds.com' },
+    alumniOf: schools.length === 1 ? schools[0] : schools,
+    knowsAbout: e.knowsAbout,
     address: { '@type': 'PostalAddress', addressLocality: 'Corrientes', addressCountry: 'AR' },
-    alumniOf: data.education.map(e => ({ '@type': 'CollegeOrUniversity', name: e.school })),
-    sameAs: [data.contact.linkedin, data.site.home, ...data.founderProjects.map(p => p.url)]
+    sameAs: e.sameAs
   }
   return JSON.stringify(ld)
 }
